@@ -14,7 +14,8 @@ import { DB_NAME } from './src/constants.js';
 const app = express();
 
 app.use(cors({
-    origin: [ 'http://localhost:5173', 'https://megablogapp-p0ys.onrender.com' ],
+    // origin: [ 'http://localhost:5173', 'https://megablogapp-p0ys.onrender.com' ],
+    origin: 'https://megablog-app.onrender.com',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
