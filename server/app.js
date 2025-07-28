@@ -13,8 +13,6 @@ import { DB_NAME } from './src/constants.js';
 // Initialize the app
 const app = express();
 
-app.use('/uploads', express.static('uploads'));
-
 app.use(cors({
     origin: [ 'http://localhost:5173', 'https://megablogapp-p0ys.onrender.com' ],
     credentials: true,
@@ -41,6 +39,9 @@ app.use(express.json());
         throw error;
     }
 })();
+
+
+app.use('/uploads', express.static('uploads'));
 
 // Basic route
 app.use('/api/user', userRoute);
