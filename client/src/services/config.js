@@ -20,6 +20,7 @@ export class Service{
         try {
             const response = await fetch(`${this.baseUrl}/blog/create-blog`, {
                 method: "POST",
+                credentials: 'include',
                 body: formData,
             })
 
@@ -84,7 +85,10 @@ export class Service{
 
     async getPosts(){
         try {
-            const response = await fetch(`${this.baseUrl}/blog/blogs`)
+            const response = await fetch(`${this.baseUrl}/blog/blogs`, {
+                method: 'GET',
+                credentials: 'include',
+            })
 
             const data = await response.json();
             return data.data;

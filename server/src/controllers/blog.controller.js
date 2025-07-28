@@ -3,7 +3,7 @@ import uploadOnCloudinary from '../utils/cloudinary.js';
 
 const createBlog = async (req, res) => {
     const { title, content, slug, status } = req.body;
-    // const userId = req.user._id; // Get userId from the authenticated user
+    const userId = req.userId; // Get userId from the authenticated user
 
     if (!title || !content || !slug || !status) {
         return res.status(400).json({
@@ -29,7 +29,7 @@ const createBlog = async (req, res) => {
             slug,
             featuredImage: uploadedFile.url,
             status: status || 'draft',
-            // userId: userId,
+            userId
         });
 
         await newBlog.save();
@@ -50,8 +50,10 @@ const createBlog = async (req, res) => {
 };
 
 const getAllBlogs = async (req, res) => {
+    const userId = req.userId;
+    
     try {
-        const blogs = await Blog.find();
+        const blogs = await Blog.find({ userId });
 
         if (blogs.length === 0) {
             return res.status(404).json({

@@ -8,7 +8,8 @@ const blogSchema = new Schema({
     status: { type: String,
         enum: ['draft', 'published', 'Active', 'Inactive'],
         default: 'draft',
-    }
+    },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 },{
     timestamps: true,
 });
