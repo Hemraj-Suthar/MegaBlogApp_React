@@ -16,10 +16,10 @@ const app = express();
 app.use('/uploads', express.static('uploads'));
 
 app.use(cors({
-    origin: 'http://localhost:5173', // e.g., 'http://localhost:5173'
-    credentials: true, // <--- THIS IS ESSENTIAL for sending/receiving cookies cross-origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed request headers
+    origin: [ 'http://localhost:5173', 'https://megablogapp-p0ys.onrender.com' ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use(cookieParser());
